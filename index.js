@@ -44,6 +44,20 @@ function createEvent(eventName, creatorUID, members, location, time, numPeople, 
         });
 }
 
+/**
+ * identify comment by timestamp 
+ * @param {[type]} eventName    [description]
+ * @param {[type]} commenterUID [description]
+ * @param {[type]} message      [description]
+ * @param {[type]} timeStamp    [description]
+ */
+function addComment(eventName, commenterUID, message, timeStamp) {
+    database.ref('events/' + eventName + '/comments/' + timeStamp).set({
+        commenterUID: commenterUID,
+        message: message
+    });
+}
+
 function readName() {
     firebase.database().ref('/users/').once('value').then(function(snapshot) {
         console.log(snapshot.val())
