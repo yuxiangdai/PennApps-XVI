@@ -1,3 +1,3 @@
 $(document).ready(function() {
-    console.log('read');
+    console.log($('#create'));
 })
