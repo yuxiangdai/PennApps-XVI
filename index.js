@@ -82,19 +82,27 @@ app.get('/new', function(req, res) {
     res.render("new");
 });
 
-///////
-// Yuxiang's Testing route / stuff
-app.get('/test', function(req, res) {
-    res.render("test");
+// view the events of the current user
+app.get("/myevents", function(req, res){
+    res.render("myevents");
 });
 
+// ///////
+// // Yuxiang's Testing route / stuff
+// app.get('/test', function(req, res) {
+//     res.render("test");
+// });
+
+// create new event
 app.post("/new", function(req, res){
-    console.log(req.body);
+    // console.log(req.body);
     var name = req.body.name;
     var numPeople = req.body.numPeople;
-    console.log("name:" + name)
-    console.log("success")
-    res.redirect("/")
+    // test posting to database
+    createEvent(name, 'creatorUID', 'members', 'location', 'time', numPeople, 'description', 'passcode', 'comments');
+    // console.log("name:" + name)
+    // console.log("success")
+    res.redirect("/new")
 });
 /////
 
