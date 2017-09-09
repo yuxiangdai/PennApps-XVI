@@ -100,15 +100,15 @@ app.get('/new', function(req, res) {
 app.get("/myevents", function(req, res){
     var testse = 1;
     firebase.database().ref('/events/').once('value').then(function(snapshot) {
-        
+
         var testjson = snapshot.val();
         console.log(Object.keys(testjson));
-        
+
         res.render("myevents", {
             myVar: testjson
         });
     });
-    
+
 });
 
 // ///////
@@ -123,13 +123,10 @@ app.post("/new", function(req, res){
     var name = req.body.name;
     var numPeople = req.body.numPeople;
     // test posting to database
-<<<<<<< HEAD
     createEvent(name, 'creatorUID', 'members', 'Toronto', 'time', numPeople, 'description', 'passcode', 'HelloComment');
     addComment(name, 'commenterUID', 'message2', 'timestamp');
-=======
     setEvent(name, 'creatorUID', 'members', 'location', 'time', numPeople, 'description', 'passcode', 'comments');
     // console.log("name:" + name)
->>>>>>> ed0e270e32d6896e40b9632087500953c6d342fd
     // console.log("success")
     res.redirect("/new")
 });
