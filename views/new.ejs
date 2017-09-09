@@ -3,24 +3,24 @@
 <!-- form goes here, with text fields and button to submit -->
   <p class="lead">Input when and where you would like to meet as well as how many people you would like to set up an event with. <p>
 
-  <form class="form-horizontal" action="/action_page.php">
+  <form action="/new" method="post" class="form-horizontal">
     <div class="form-group">
         <label class="control-label col-sm-2" for="pwd">Name:</label>
-        <div class="col-sm-10">          
-            <input type="text" class="form-control" placeholder="Enter your name" style="width:80%">
+        <div class="col-sm-10">
+            <input name='name' type="text" class="form-control" placeholder="Enter your name" style="width:80%">
         </div>
     </div>
     <div class="form-group">
       <label class="control-label col-sm-2" for="pwd">Number of People:</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" placeholder="Number of people" style="width:80%">
+        <input name='numPeople' type="text" class="form-control" placeholder="Number of people" style="width:80%">
+      </div>
+    </div>
+    <div class="form-group" style="text-align: center;>
+      <div class="col-sm-offset-2 col-sm-10" ">
+        <button id="create" type="submit" class="btn btn-default">Submit</button>
       </div>
     </div>
   </form>
-   <div class="form-group" style="text-align: center;>        
-      <div class="col-sm-offset-2 col-sm-10" ">
-        <button type="submit" class="btn btn-default">Submit</button>
-      </div>
-  </div>
-  <script src='createNew.js'></script>
+ <!-- <script src='createNew.js'></script> -->
 <% include ../partials/footer %>

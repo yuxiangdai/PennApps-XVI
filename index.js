@@ -13,7 +13,9 @@ var config = {
 
 const express = require('express')
 const app = express()
+const bodyParser = require("body-parser")
 
+app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static(__dirname + '/public')); // serve out html
 app.set("view engine", "ejs");
 
@@ -86,11 +88,13 @@ app.get('/test', function(req, res) {
     res.render("test");
 });
 
-app.post("/postreq", function(req, res){
-    var name = req.body.username;
-    var image = req.body.password;
+app.post("/new", function(req, res){
+    console.log(req.body);
+    var name = req.body.name;
+    var numPeople = req.body.numPeople;
     console.log("name:" + name)
     console.log("success")
+    res.redirect("/")
 });
 /////
 
