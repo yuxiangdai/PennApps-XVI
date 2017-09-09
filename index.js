@@ -14,6 +14,8 @@ var config = {
 const express = require('express')
 const app = express()
 
+app.use(express.static(__dirname + '/public')); // serve out html
+
 // Get a reference to the database service
 var database = firebase.database();
 
@@ -66,7 +68,8 @@ function readName() {
 }
 
 app.get('/', function (req, res) {
-    res.send('Hello World!')
+    // res.send('Hello World!')
+    res.render("index");
     createEvent('test', 1, 'members', 'location', 'time', 'numPeople', 'description', 'passcode', 'comments');
     addComment('test', 'commenterUID', 'message2', 'timestamp');
 })
