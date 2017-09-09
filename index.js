@@ -23,10 +23,10 @@ app.set("view engine", "ejs");
 var database = firebase.database();
 
 /**
- * add event to database
+ * add new or modify existing event to database
  * @param  {string} eventName  [description]
- * @param  {number} creatorUID [description]
  * @param  {Json object} members    keys are the members' uid
+ * @param  {number} creatorUID [description]
  * @param  {string} location   [description]
  * @param  {string} time       [description]
  * @param  {number} numPeople  [description]
@@ -35,7 +35,7 @@ var database = firebase.database();
  * @param  {Json object} comments see addComment()
  * @return {[type]}            [description]
  */
-function createEvent(eventName, creatorUID, members, location, time, numPeople, description, passcode, comments) {
+function setEvent(eventName, creatorUID, members, location, time, numPeople, description, passcode, comments) {
     database.ref('events/' + eventName).set({
         creatorUID: creatorUID,
         members: members,
@@ -48,8 +48,19 @@ function createEvent(eventName, creatorUID, members, location, time, numPeople, 
         });
 }
 
+// return true if the password was correct, false if it wasn't.
+function deleteEvent(eventName, passcode) {
+    // TODO BEFORE DEPLOY: DON'T DO PASSWORD CHECKING LIKE THIS. BAD.
+    let correctPasscode = 'pw'// todo: retrieve the passcode properly
+    if (passcode == correctPasscode) { // todo: update this
+        database.ref('events/' + eventName).remove();
+        return true;
+    }
+    return false;
+}
+
 /**
- * identify comment by timestamp 
+ * identify comment by timestamp
  * @param {[type]} eventName    [description]
  * @param {[type]} commenterUID [description]
  * @param {[type]} message      [description]
@@ -73,8 +84,9 @@ function readName() {
 app.get('/', function (req, res) {
     // res.send('Hello World!')
     res.render("index");
-    createEvent('test', 1, 'members', 'location', 'time', 'numPeople', 'description', 'passcode', 'comments');
-    addComment('test', 'commenterUID', 'message2', 'timestamp');
+    // setEvent('test', 1, 'members', 'location', 'time', 'numPeople', 'description', 'passcode', 'comments');
+    // addComment('test', 'commenterUID', 'message2', 'timestamp');
+    // deleteEvent('test', 'pw')
 })
 
 // create new event
@@ -111,8 +123,13 @@ app.post("/new", function(req, res){
     var name = req.body.name;
     var numPeople = req.body.numPeople;
     // test posting to database
+<<<<<<< HEAD
     createEvent(name, 'creatorUID', 'members', 'Toronto', 'time', numPeople, 'description', 'passcode', 'HelloComment');
     addComment(name, 'commenterUID', 'message2', 'timestamp');
+=======
+    setEvent(name, 'creatorUID', 'members', 'location', 'time', numPeople, 'description', 'passcode', 'comments');
+    // console.log("name:" + name)
+>>>>>>> ed0e270e32d6896e40b9632087500953c6d342fd
     // console.log("success")
     res.redirect("/new")
 });
