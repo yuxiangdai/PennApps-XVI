@@ -31,8 +31,7 @@ var database = firebase.database();
  * @return {[type]}            [description]
  */
 function createEvent(eventName, creatorUID, members, location, time, numPeople, description, passcode, comments) {
-    firebase.database().ref('events/' + eventName).set({
-        eventName: eventName,
+    database.ref('events/' + eventName).set({
         creatorUID: creatorUID,
         members: members,
         location: location,
