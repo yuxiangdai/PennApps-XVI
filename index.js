@@ -76,7 +76,7 @@ app.get('/', function (req, res) {
 
 // create new event
 app.get('/new', function(req, res) {
-    res.render("new"); // TOdo create new.html in public
+    res.render("new");
 });
 
 app.listen(3000, function () {
