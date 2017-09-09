@@ -48,8 +48,19 @@ function createEvent(eventName, creatorUID, members, location, time, numPeople, 
         });
 }
 
+// return true if the password was correct, false if it wasn't.
+function deleteEvent(eventName, passcode) {
+    // TODO BEFORE DEPLOY: DON'T DO PASSWORD CHECKING LIKE THIS. BAD.
+    let correctPasscode = 'pw'// todo: retrieve the passcode properly
+    if (passcode == correctPasscode) { // todo: update this
+        database.ref('events/' + eventName).remove();
+        return true;
+    }
+    return false;
+}
+
 /**
- * identify comment by timestamp 
+ * identify comment by timestamp
  * @param {[type]} eventName    [description]
  * @param {[type]} commenterUID [description]
  * @param {[type]} message      [description]
@@ -75,6 +86,7 @@ app.get('/', function (req, res) {
     res.render("index");
     createEvent('test', 1, 'members', 'location', 'time', 'numPeople', 'description', 'passcode', 'comments');
     addComment('test', 'commenterUID', 'message2', 'timestamp');
+    deleteEvent('test', 'lowowrld')
 })
 
 // create new event

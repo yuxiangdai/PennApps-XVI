@@ -1,7 +1,9 @@
-firebase authentication (don't just let anyone read write the database!) https://firebase.google.com/docs/database/security/quickstart 
+firebase authentication (don't just let anyone read write the database!) https://firebase.google.com/docs/database/security/quickstart
 https://stackoverflow.com/questions/37482366/is-it-safe-to-expose-firebase-apikey-to-the-public
 DON'T KEEP USER PASSWORDS IN PLAINTEXT IN A PUBLICLY READABLE WRITABLE DATABASE (ok for test/toy data)
 
 implement user accounts for my events part.
 
 figure out how the calendar works-- good ui and whatnot
+
+any comments labeled todo before deploy
