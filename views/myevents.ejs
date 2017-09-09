@@ -1,4 +1,17 @@
 <!-- list of the events that the user is involved in -->
 <% include ../partials/header %>
 
+<script>
+
+</script>
+<table>
+    <%= myVar %>
+    <% for (var event in myVar){ %>
+       <tr>
+         <td><%= myVar[event].comments %> } </td>
+         <td><%= myVar[event].location %></td>
+       </tr>
+    <% } %>
+    </table>
+
 <% include ../partials/footer %>

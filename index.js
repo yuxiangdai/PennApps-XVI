@@ -64,8 +64,8 @@ function addComment(eventName, commenterUID, message, timeStamp) {
 }
 
 function readName() {
-    firebase.database().ref('/users/').once('value').then(function(snapshot) {
-        console.log(snapshot.val())
+    firebase.database().ref('/events/').once('value').then(function(snapshot) {
+        console.log(snapshot.val());
         // ...
     });
 }
@@ -79,12 +79,24 @@ app.get('/', function (req, res) {
 
 // create new event
 app.get('/new', function(req, res) {
+
+
     res.render("new");
 });
 
 // view the events of the current user
 app.get("/myevents", function(req, res){
-    res.render("myevents");
+    var testse = 1;
+    firebase.database().ref('/events/').once('value').then(function(snapshot) {
+        
+        var testjson = snapshot.val();
+        console.log(Object.keys(testjson));
+        
+        res.render("myevents", {
+            myVar: testjson
+        });
+    });
+    
 });
 
 // ///////
@@ -99,8 +111,8 @@ app.post("/new", function(req, res){
     var name = req.body.name;
     var numPeople = req.body.numPeople;
     // test posting to database
-    createEvent(name, 'creatorUID', 'members', 'location', 'time', numPeople, 'description', 'passcode', 'comments');
-    // console.log("name:" + name)
+    createEvent(name, 'creatorUID', 'members', 'Toronto', 'time', numPeople, 'description', 'passcode', 'HelloComment');
+    addComment(name, 'commenterUID', 'message2', 'timestamp');
     // console.log("success")
     res.redirect("/new")
 });
