@@ -77,19 +77,10 @@ app.get('/', function (req, res) {
     addComment('test', 'commenterUID', 'message2', 'timestamp');
 })
 
-app.get('/list', function(req, res){
-    res.render("list");
-});
-
 // create new event
 app.get('/new', function(req, res) {
     res.render("new");
 });
-
-app.get('/list', function(req, res) {
-    res.render("list");
-});
-
 
 // view the events of the current user
 app.get("/myevents", function(req, res){
