@@ -82,6 +82,11 @@ app.get('/new', function(req, res) {
     res.render("new");
 });
 
+// view the events of the current user
+app.get("/myevents", function(req, res){
+    res.render("myevents");
+});
+
 // ///////
 // // Yuxiang's Testing route / stuff
 // app.get('/test', function(req, res) {
