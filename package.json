@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/LWprogramming/PennApps-XVI#readme",
   "dependencies": {
-    "express": "^4.15.4"
+    "express": "^4.15.4",
+    "firebase": "^4.3.1"
   }
 }
