@@ -80,6 +80,20 @@ app.get('/new', function(req, res) {
     res.render("new");
 });
 
+///////
+// Yuxiang's Testing route / stuff
+app.get('/test', function(req, res) {
+    res.render("test");
+});
+
+app.post("/postreq", function(req, res){
+    var name = req.body.username;
+    var image = req.body.password;
+    console.log("name:" + name)
+    console.log("success")
+});
+/////
+
 app.listen(3000, function () {
     console.log('Example app listening on port 3000!')
 })
