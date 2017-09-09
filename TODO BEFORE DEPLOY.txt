@@ -1,1 +1,2 @@
-firebase authentication (don't just let anyone read write the database!) https://firebase.google.com/docs/database/security/quickstart
+firebase authentication (don't just let anyone read write the database!) https://firebase.google.com/docs/database/security/quickstart 
+https://stackoverflow.com/questions/37482366/is-it-safe-to-expose-firebase-apikey-to-the-public
