@@ -24,9 +24,17 @@ function writeName(name, number) {
         });
 }
 
+function readName() {
+    firebase.database().ref('/users/').once('value').then(function(snapshot) {
+        console.log(snapshot.val())
+        // ...
+    });
+}
+
 app.get('/', function (req, res) {
     res.send('Hello World!')
     writeName('hello', 3)
+    readName()
 })
 
 app.listen(3000, function () {
