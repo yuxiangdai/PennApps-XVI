@@ -14,8 +14,19 @@ var config = {
 const express = require('express')
 const app = express()
 
+// Get a reference to the database service
+var database = firebase.database();
+
+function writeName(name, number) {
+  firebase.database().ref('users/' + name).set({
+    number: number,
+    name: name
+    });
+}
+
 app.get('/', function (req, res) {
   res.send('Hello World!')
+  writeName('hello', 2)
 })
 
 app.listen(3000, function () {
