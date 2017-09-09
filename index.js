@@ -23,10 +23,10 @@ app.set("view engine", "ejs");
 var database = firebase.database();
 
 /**
- * add event to database
+ * add new or modify existing event to database
  * @param  {string} eventName  [description]
- * @param  {number} creatorUID [description]
  * @param  {Json object} members    keys are the members' uid
+ * @param  {number} creatorUID [description]
  * @param  {string} location   [description]
  * @param  {string} time       [description]
  * @param  {number} numPeople  [description]
@@ -35,7 +35,7 @@ var database = firebase.database();
  * @param  {Json object} comments see addComment()
  * @return {[type]}            [description]
  */
-function createEvent(eventName, creatorUID, members, location, time, numPeople, description, passcode, comments) {
+function setEvent(eventName, creatorUID, members, location, time, numPeople, description, passcode, comments) {
     database.ref('events/' + eventName).set({
         creatorUID: creatorUID,
         members: members,
@@ -84,9 +84,9 @@ function readName() {
 app.get('/', function (req, res) {
     // res.send('Hello World!')
     res.render("index");
-    createEvent('test', 1, 'members', 'location', 'time', 'numPeople', 'description', 'passcode', 'comments');
-    addComment('test', 'commenterUID', 'message2', 'timestamp');
-    deleteEvent('test', 'lowowrld')
+    // setEvent('test', 1, 'members', 'location', 'time', 'numPeople', 'description', 'passcode', 'comments');
+    // addComment('test', 'commenterUID', 'message2', 'timestamp');
+    // deleteEvent('test', 'pw')
 })
 
 // create new event
