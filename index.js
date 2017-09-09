@@ -18,17 +18,17 @@ const app = express()
 var database = firebase.database();
 
 function writeName(name, number) {
-  firebase.database().ref('users/' + name).set({
-    number: number,
-    name: name
-    });
+    firebase.database().ref('users/' + name).set({
+        number: number,
+        name: name
+        });
 }
 
 app.get('/', function (req, res) {
-  res.send('Hello World!')
-  writeName('hello', 2)
+    res.send('Hello World!')
+    writeName('hello', 3)
 })
 
 app.listen(3000, function () {
-  console.log('Example app listening on port 3000!')
+    console.log('Example app listening on port 3000!')
 })
