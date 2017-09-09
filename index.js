@@ -15,6 +15,7 @@ const express = require('express')
 const app = express()
 
 app.use(express.static(__dirname + '/public')); // serve out html
+app.set("view engine", "ejs");
 
 // Get a reference to the database service
 var database = firebase.database();
