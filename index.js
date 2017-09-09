@@ -74,6 +74,11 @@ app.get('/', function (req, res) {
     addComment('test', 'commenterUID', 'message2', 'timestamp');
 })
 
+// create new event
+app.get('/new', function(req, res) {
+    res.render("new"); // TOdo create new.html in public
+});
+
 app.listen(3000, function () {
     console.log('Example app listening on port 3000!')
 })
