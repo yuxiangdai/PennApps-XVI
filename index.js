@@ -17,10 +17,30 @@ const app = express()
 // Get a reference to the database service
 var database = firebase.database();
 
-function writeName(name, number) {
-    firebase.database().ref('users/' + name).set({
-        number: number,
-        name: name
+/**
+ * add event to database
+ * @param  {string} eventName  [description]
+ * @param  {number} creatorUID [description]
+ * @param  {Json object} members    keys are the members' uid
+ * @param  {string} location   [description]
+ * @param  {string} time       [description]
+ * @param  {number} numPeople  [description]
+ * @param  {string} notes      [description]
+ * @param  {string} passcode   [description]
+ * @param  {Json object} comments see addComment()
+ * @return {[type]}            [description]
+ */
+function createEvent(eventName, creatorUID, members, location, time, numPeople, description, passcode, comments) {
+    firebase.database().ref('events/' + eventName).set({
+        eventName: eventName,
+        creatorUID: creatorUID,
+        members: members,
+        location: location,
+        time: time,
+        numPeople: numPeople,
+        description: description,
+        passcode: passcode,
+        comments: comments
         });
 }
 
