@@ -1,0 +1,1 @@
+firebase authentication (don't just let anyone read write the database!) https://firebase.google.com/docs/database/security/quickstart
