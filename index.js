@@ -111,7 +111,7 @@ app.post("/new", function(req, res){
     var name = req.body.name;
     var numPeople = req.body.numPeople;
     // test posting to database
-    createEvent(name, 'creatorUID', 'members', 'location', 'time', numPeople, 'description', 'passcode', 'comments');
+    setEvent(name, 'creatorUID', 'members', 'location', 'time', numPeople, 'description', 'passcode', 'comments');
     // console.log("name:" + name)
     // console.log("success")
     res.redirect("/new")
