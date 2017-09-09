@@ -51,10 +51,11 @@ function createEvent(eventName, creatorUID, members, location, time, numPeople, 
  * @param {[type]} timeStamp    [description]
  */
 function addComment(eventName, commenterUID, message, timeStamp) {
-    database.ref('events/' + eventName + '/comments/' + timeStamp).set({
+    database.ref('events/' + eventName + '/comments/' + Date.now().toString()).set({
         commenterUID: commenterUID,
         message: message
     });
+    // console.log(firebase.database.ServerValue.TIMESTAMP)
 }
 
 function readName() {
@@ -66,8 +67,8 @@ function readName() {
 
 app.get('/', function (req, res) {
     res.send('Hello World!')
-    writeName('hello', 3)
-    readName()
+    createEvent('test', 1, 'members', 'location', 'time', 'numPeople', 'description', 'passcode', 'comments');
+    addComment('test', 'commenterUID', 'message2', 'timestamp');
 })
 
 app.listen(3000, function () {
