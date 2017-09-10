@@ -337,6 +337,10 @@
           var joinedEvent = false;
           joinEvent.onclick = function(event) {
             joinedEvent = !joinedEvent;
+
+            database.ref('/events/').once('value').then(function(snapshot) {
+              eventsJSON = snapshot.val();
+            }); 
             let numPeopleLeft = eventsJSON[eventName].numPeople;
 
             joinEvent.style.outline = 0;
@@ -364,9 +368,7 @@
               numPeopleLeft.set(Number(numPeopleLeft.val()) + 1)
             }
 
-            database.ref('/events/').once('value').then(function(snapshot) {
-              eventsJSON = snapshot.val();
-            }); // update json to reflect changing numbers.
+            // update json to reflect changing numbers.
 
             ppl.innerHTML = numPeopleMessage(eventsJSON[eventName].numPeople) // live number update            
 
