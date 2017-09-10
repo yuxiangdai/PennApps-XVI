@@ -22,3 +22,7 @@ implement user accounts and related features e.g. commenting.
 allow user to edit and delete events-- passwords?
 
 implement "My Events"-- events that the user is involved in. See partials/header.ejs and partials/index-header.ejs commented out part. 
+
+live updates for number of people left
+
+badges for the number of events in each time interval
