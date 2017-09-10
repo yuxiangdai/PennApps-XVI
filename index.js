@@ -138,14 +138,14 @@ app.post("/comment/:id", function(req, res){
 // create new event
 app.post("/new", function(req, res){
     // console.log(req.body);
-    var name = req.body.name;
-    var numPeople = req.body.numPeople;
-    // test posting to database
-    setEvent(name, 'creatorUID', 'members', 'Toronto', 'time', numPeople, 'description', 'passcode', 'HelloComment');
-    addComment(name, 'commenterUID', 'message2', 'timestamp');
-    setEvent(name, 'creatorUID', 'members', 'location', 'time', numPeople, 'description', 'passcode', 'comments');
-    // console.log("name:" + name)
-    // console.log("success")
+    // var name = req.body.name;
+    // var numPeople = req.body.numPeople;
+    // // test posting to database
+    // setEvent(name, 'creatorUID', 'members', 'Toronto', 'time', numPeople, 'description', 'passcode', 'HelloComment');
+    // addComment(name, 'commenterUID', 'message2', 'timestamp');
+    // setEvent(name, 'creatorUID', 'members', 'location', 'time', numPeople, 'description', 'passcode', 'comments');
+    let b = req.body;
+setEvent(b['eventName'], 'creatorUID', 'members', b.location, b.hour, b.minute, b.ampm, b.numPeople, b.description, b.passcode, 'comments')
     res.redirect("/new")
 });
 /////
