@@ -123,7 +123,7 @@ app.post("/new", function(req, res){
     var name = req.body.name;
     var numPeople = req.body.numPeople;
     // test posting to database
-    createEvent(name, 'creatorUID', 'members', 'Toronto', 'time', numPeople, 'description', 'passcode', 'HelloComment');
+    setEvent(name, 'creatorUID', 'members', 'Toronto', 'time', numPeople, 'description', 'passcode', 'HelloComment');
     addComment(name, 'commenterUID', 'message2', 'timestamp');
     setEvent(name, 'creatorUID', 'members', 'location', 'time', numPeople, 'description', 'passcode', 'comments');
     // console.log("name:" + name)
