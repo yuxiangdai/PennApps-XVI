@@ -294,7 +294,7 @@
             }
           }
           let ppl = document.createElement('p');
-          ppl.innerHTML = numPeopleMessage(eventsJSON[eventName].numPeople)
+          // ppl.innerHTML = numPeopleMessage(eventsJSON[eventName].numPeople)
           link.append(ppl);
 
           let description = document.createElement('p');
@@ -349,12 +349,18 @@
               joinEvent.innerHTML = 'Leave event'
 
               joinEvent.style.backgroundColor = 'red';
-              console.log(numPeopleLeft)
-              console.log(database.ref('events/' + eventName))
+              // console.log(numPeopleLeft)
+              console.log(eventsJSON[eventName].numPeople)
+              database.ref('/events/').once('value').then(function(snapshot) {
+                console.log(snapshot.val()[eventName].numPeople);
+              });
               database.ref('events/' + eventName).update({numPeople: numPeopleLeft - 1})
+              database.ref('/events/').once('value').then(function(snapshot) {
+                eventsJSON = snapshot.val();
+              }); 
               joinEvent.style.backgroundColor = 'FFA72D';
               joinEvent.style.color = 'white'; 
-              numPeopleLeft.set(Number(numPeopleLeft.val()) - 1)
+              // ppl.innerHTML = numPeopleMessage(eventsJSON[eventName].numPeople)
             }
             else {
               // just left event
@@ -362,15 +368,15 @@
               joinEvent.style.backgroundColor = 'white'
 
               database.ref('events/' + eventName).update({numPeople: numPeopleLeft + 1})
+              database.ref('/events/').once('value').then(function(snapshot) {
+                eventsJSON = snapshot.val();
+              }); 
 
               joinEvent.style.color = 'black'; 
               joinEvent.style.color = 'FFA72D';
-              numPeopleLeft.set(Number(numPeopleLeft.val()) + 1)
+              // numPeopleLeft.set(Number(numPeopleLeft.val()) + 1)
+              // ppl.innerHTML = numPeopleMessage(eventsJSON[eventName].numPeople)
             }
-
-            // update json to reflect changing numbers.
-
-            ppl.innerHTML = numPeopleMessage(eventsJSON[eventName].numPeople) // live number update            
 
           }
           // link.append(joinEvent);
