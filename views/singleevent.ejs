@@ -1,13 +1,75 @@
 <!-- list of the events that the user is involved in -->
 <% include ../partials/events-header %>
 
-<div class="container">
-    <h2><%= id %></h2>
-    <h2>Comments</h2>
-    <div id="demo1" class="collapse">
 
+
+<div class="container">
+        <h2><%= id %></h2>
+        <div class="row">
+            <div class="col-md-8">
+              <div class="page-header">
+                <h1><small class="pull-right">45 comments</small> Comments </h1>
+              </div> 
+               <div id="commentlist" class="comments-list">
+                   <div class="media">
+                       <p class="pull-right"><small>5 days ago</small></p>
+                        <a class="media-left" href="#">
+                          <img src="http://lorempixel.com/40/40/people/1/">
+                        </a>
+                        <div class="media-body">
+                            
+                          <h4 class="media-heading user_name">Baltej Singh</h4>
+                          Wow! this is really great.
+                          
+                          <p><small><a href="">Like</a> - <a href="">Share</a></small></p>
+                        </div>
+                      </div>
+                   <div class="media">
+                       <p class="pull-right"><small>5 days ago</small></p>
+                        <a class="media-left" href="#">
+                          <img src="http://lorempixel.com/40/40/people/2/">
+                        </a>
+                        <div class="media-body">
+                            
+                          <h4 class="media-heading user_name">Baltej Singh</h4>
+                          Wow! this is really great.
+                          
+                          <p><small><a href="">Like</a> - <a href="">Share</a></small></p>
+                        </div>
+                      </div>
+                   <div class="media">
+                       <p class="pull-right"><small>5 days ago</small></p>
+                        <a class="media-left" href="#">
+                          <img src="http://lorempixel.com/40/40/people/3/">
+                        </a>
+                        <div class="media-body">
+                            
+                          <h4 class="media-heading user_name">Baltej Singh</h4>
+                          Wow! this is really great.
+                          
+                          <p><small><a href="">Like</a> - <a href="">Share</a></small></p>
+                        </div>
+                      </div>
+                   <div class="media">
+                       <p class="pull-right"><small>5 days ago</small></p>
+                        <a class="media-left" href="#">
+                          <img src="http://lorempixel.com/40/40/people/4/">
+                        </a>
+                        <div class="media-body">
+                            
+                          <h4 class="media-heading user_name">Baltej Singh</h4>
+                          Wow! this is really great.
+                          
+                          <p><small><a href="">Like</a> - <a href="">Share</a></small></p>
+                        </div>
+                      </div>
+               </div>
+                
+                
+                
+            </div>
+        </div>
     </div>
-</div>
 
 <script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
 <script type="text/javascript">
@@ -26,26 +88,70 @@
   var database = firebase.database();
   var eventsJSON;
   var eventName = <%- JSON.stringify(id) %>;
-  database.ref('/events/').once('value').then(function(snapshot) {
+  database.ref('/events/' +  eventName).once('value').then(function(snapshot) {
         eventsJSON = snapshot.val();
 
+        $.each(eventsJSON["comments"], function(i, item){
 
-        console.log("eJSON:" + eventsJSON[eventName]);
-        // document.getElementById("testLive").innerHTML = JSON.stringify(eventsJSON, null, 4);
-          // console.log(typeof(event))
-          let link = document.createElement('a');
-          link.href = '#';
+
+            // alert("Mine is " + i + "|" + item.commenterUID + "|" + item.message);
+        });
+
+
+        // <div class="media">
+        //                <p class="pull-right"><small>5 days ago</small></p>
+        //                 <a class="media-left" href="#">
+        //                   <img src="http://lorempixel.com/40/40/people/1/">
+        //                 </a>
+        //                 <div class="media-body">
+                            
+        //                   <h4 class="media-heading user_name">Baltej Singh</h4>
+        //                   Wow! this is really great.
+                          
+        //                   
+        //                 </div>
+        //               </div>
+        
+        
+          let link = document.createElement('div');
+          link.id= "link";
+          link.class= "media";
           
-          let title = document.createElement('h4');
-          title.innerHTML = "innetHTML";
-          link.append(title);
+          
+          let title = document.createElement('p');
+          title.id= "title";          
+          title.class= "pull-right";          
+          title.append("<small>5 days ago</small>");
+
+          
+
+
+          link.html( '<p class="pull-right"><small>5 days ago</small></p>'+
+                        '<a class="media-left" href="#">'+
+                          '<img src="http://lorempixel.com/40/40/people/1/">' + 
+                        '</a><div class="media-body">' + 
+                          '<h4 class="media-heading user_name">Baltej Singh</h4>' +
+                          'Wow! this is really great.' +
+                        '</div>');
+
+         
+          
           
         //   let ppl = document.createElement('p');
         //   ppl.innerHTML = eventsJSON[event].numPeople;
         //   link.append(ppl);
 
           // link.innerHTML = JSON.stringify(eventsJSON.test, null, 4);
-          document.getElementById('demo1').append(link);
+          $("#commentlist").append(link);
+              
+          
+          
+          '<div class="media"><p class="pull-right">' + 
+            '<small>5 days ago</small></p><a class="media-left" href="#">' + 
+                '<img src="http://lorempixel.com/40/40/people/3/">' + 
+                        '</a><div class="media-body"><h4 class="media-heading user_name">Yuxiang Singh</h4>' + 
+                          'Wow! this is really great.<p><small><a href="">Like</a> - <a href="">Share</a></small></p>' +
+                        + '</div></div>');
         
         // var link = document.createElement('a');
         // link.innerHTML = 'a'
