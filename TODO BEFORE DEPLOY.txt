@@ -11,3 +11,5 @@ any comments labeled todo before deploy
 index.ejs is NESTE LIKE A LINKEDLIST. WHYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
 
 generate unique IDs for events rather than depending on event name because many people will want to use common names e.g. "lunch", "dinner"
+
+todo: input validation for everything
