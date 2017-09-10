@@ -273,6 +273,12 @@
           title.innerHTML = "" + eventName;
           link.append(title);
           
+          let time = document.createElement('p')
+          time.innerHTML = + eventsJSON[eventName].hour + ":" + eventsJSON[eventName].minute + eventsJSON[eventName].ampm.toUpperCase();
+          link.append(time);
+
+          
+
           let ppl = document.createElement('p');
           ppl.innerHTML = eventsJSON[eventName].numPeople;
           link.append(ppl);
