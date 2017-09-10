@@ -1,11 +1,12 @@
 <!-- used for creating a new event -->
 <% include ../partials/header %>
 <!-- form goes here, with text fields and button to submit -->
-  <h1>Create New Event</h1>
-  <h4>Required fields have an asterisk * by them</h4>
+ <div class="page-header" style="padding-left:25px;">
+  <h1>Create New Event <small>Required fields have an asterisk * by them</small></h1>
+ </div>
   <form action="/new" method="post" class="form-horizontal">
-    <div class="form-group">
-        <div class="col-sm-10">
+    <div class="form-group jumbotron">
+        <div class="col-sm-10" style="padding-left:100px;">
             <label class="control-label width:30%" for="pwd">Event name *</label>
             <input name='Event name' type="text" class="form-control" placeholder="Event name" style="width:70%">
             <label class="control-label width:30%" for="pwd">Number of people *</label>
