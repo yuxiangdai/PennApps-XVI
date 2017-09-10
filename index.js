@@ -23,17 +23,18 @@ app.set("view engine", "ejs");
 var database = firebase.database();
 
 /**
- * add new or modify existing event to database
- * @param  {string} eventName  [description]
- * @param  {Json object} members    keys are the members' uid
- * @param  {number} creatorUID [description]
- * @param  {string} location   [description]
- * @param  {string} time       [description]
- * @param  {number} numPeople  [description]
- * @param  {string} notes      [description]
- * @param  {string} passcode   [description]
- * @param  {Json object} comments see addComment()
- * @return {[type]}            [description]
+ * create or update an event
+ * @param {[type]} eventName   [description]
+ * @param {[type]} creatorUID  [description]
+ * @param {[type]} members     [description]
+ * @param {[type]} location    [description]
+ * @param {[type]} hour        [description]
+ * @param {[type]} minute      [description]
+ * @param {[type]} ampm        [description]
+ * @param {[type]} numPeople   [description]
+ * @param {[type]} description [description]
+ * @param {[type]} passcode    [description]
+ * @param {[type]} comments    [description]
  */
 function setEvent(eventName, creatorUID, members, location, hour, minute, ampm, numPeople, description, passcode, comments) {
     database.ref('events/' + eventName).set({
