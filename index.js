@@ -101,7 +101,7 @@ app.get('/events/:id', function(req, res, next) {
     firebase.database().ref('/events/' + req.params.id).once('value').then(function(snapshot) {
         
                 var json = snapshot.val();
-                console.log(json["description"]);
+                
                 res.render('singleevent', { description: json["description"], location: json["location"], id: req.params.id});
     });
 });
