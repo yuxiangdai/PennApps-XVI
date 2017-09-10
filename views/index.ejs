@@ -274,14 +274,28 @@
           link.append(title);
           
           let time = document.createElement('p')
-          time.innerHTML = + eventsJSON[eventName].hour + ":" + eventsJSON[eventName].minute + eventsJSON[eventName].ampm.toUpperCase();
+          time.innerHTML = eventsJSON[eventName].hour + ":" + eventsJSON[eventName].minute + eventsJSON[eventName].ampm.toUpperCase();
           link.append(time);
 
-          
+          let location = document.createElement('p')
+          location.innerHTML = "Location: " + eventsJSON[eventName].location;
+          link.append(location);
 
           let ppl = document.createElement('p');
-          ppl.innerHTML = eventsJSON[eventName].numPeople;
+          if (eventsJSON[eventName].numPeople == 0) {
+            ppl.innerHTML = "Event is full!";
+          }
+          else if (eventsJSON[eventName].numPeople == 1) {
+            ppl.innerHTML = "Room for " + eventsJSON[eventName].numPeople + " more person";
+          }
+          else {
+            ppl.innerHTML = "Room for " + eventsJSON[eventName].numPeople + " more people";
+          }
           link.append(ppl);
+
+          let description = document.createElement('p');
+          description.innerHTML = eventsJSON[eventName].description;
+          link.append(description);
 
           link.href = '/events/' + eventName;
           // link.innerHTML = JSON.stringify(eventsJSON.test, null, 4);
