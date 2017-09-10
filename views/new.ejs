@@ -14,10 +14,18 @@
             <label class="control-label width:30%" for="pwd">Location *</label>
             <input name='location' type="text" class="form-control" placeholder="Location" style="width:70%">
             <label class="control-label width:30%" for="pwd">Time *</label>
-            <input name='hour' type="number" class="form-control" placeholder="Hour">
-            <input name='minute' type="number" class="form-control" placeholder="Minute">
-            <input type="radio" name="ampm" value="am" checked>AM<br>
-            <input type="radio" name="ampm" value="pm">PM<br>
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="input-group">
+                  <span style="float:left;">
+                      <input name="hour" type="number" placeholder="Hour" class="form-control" aria-label="...">
+                  </span>
+                  <span style="float:right;">
+                      <input name="minute" type="number" placeholder="Minute" class="form-control" aria-label="...">
+                  </span>
+                </div><!-- /input-group -->
+              </div><!-- /.col-lg-6 -->
+            </div><!-- /.row -->
             <label class="control-label width:30%" for="pwd">Description</label>
             <input name='description' type="text" class="form-control" placeholder="Description" style="width:70%">
             <label class="control-label width:30%" for="pwd">Event Passcode (to edit/ delete events) *</label>
