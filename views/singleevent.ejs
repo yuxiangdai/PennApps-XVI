@@ -1,8 +1,6 @@
 <!-- list of the events that the user is involved in -->
 <% include ../partials/events-header %>
 
-
-
 <div class="container">
         <h2><%= id %></h2>
         <div class="row">
@@ -11,58 +9,7 @@
                 <h1><small class="pull-right">45 comments</small> Comments </h1>
               </div> 
                <div id="commentlist" class="comments-list">
-                   <div class="media">
-                       <p class="pull-right"><small>5 days ago</small></p>
-                        <a class="media-left" href="#">
-                          <img src="http://lorempixel.com/40/40/people/1/">
-                        </a>
-                        <div class="media-body">
-                            
-                          <h4 class="media-heading user_name">Baltej Singh</h4>
-                          Wow! this is really great.
-                          
-                          <p><small><a href="">Like</a> - <a href="">Share</a></small></p>
-                        </div>
-                      </div>
-                   <div class="media">
-                       <p class="pull-right"><small>5 days ago</small></p>
-                        <a class="media-left" href="#">
-                          <img src="http://lorempixel.com/40/40/people/2/">
-                        </a>
-                        <div class="media-body">
-                            
-                          <h4 class="media-heading user_name">Baltej Singh</h4>
-                          Wow! this is really great.
-                          
-                          <p><small><a href="">Like</a> - <a href="">Share</a></small></p>
-                        </div>
-                      </div>
-                   <div class="media">
-                       <p class="pull-right"><small>5 days ago</small></p>
-                        <a class="media-left" href="#">
-                          <img src="http://lorempixel.com/40/40/people/3/">
-                        </a>
-                        <div class="media-body">
-                            
-                          <h4 class="media-heading user_name">Baltej Singh</h4>
-                          Wow! this is really great.
-                          
-                          <p><small><a href="">Like</a> - <a href="">Share</a></small></p>
-                        </div>
-                      </div>
-                   <div class="media">
-                       <p class="pull-right"><small>5 days ago</small></p>
-                        <a class="media-left" href="#">
-                          <img src="http://lorempixel.com/40/40/people/4/">
-                        </a>
-                        <div class="media-body">
-                            
-                          <h4 class="media-heading user_name">Baltej Singh</h4>
-                          Wow! this is really great.
-                          
-                          <p><small><a href="">Like</a> - <a href="">Share</a></small></p>
-                        </div>
-                      </div>
+                   
                </div>
                 
                 
@@ -93,30 +40,21 @@
 
         $.each(eventsJSON["comments"], function(i, item){
 
+            $("#commentlist").append('<div class="media"><p class="pull-right">' + 
+            '<small>' + i  + '</small></p><a class="media-left" href="#">' + 
+                '<img src="http://lorempixel.com/40/40/people/3/">' + 
+                        '</a><div class="media-body"><h4 class="media-heading user_name">'+ item.commenterUID +
+                            '</h4>' + 
+                            item.message +
+                        '</div></div>');
 
             // alert("Mine is " + i + "|" + item.commenterUID + "|" + item.message);
         });
-
-
-        // <div class="media">
-        //                <p class="pull-right"><small>5 days ago</small></p>
-        //                 <a class="media-left" href="#">
-        //                   <img src="http://lorempixel.com/40/40/people/1/">
-        //                 </a>
-        //                 <div class="media-body">
-                            
-        //                   <h4 class="media-heading user_name">Baltej Singh</h4>
-        //                   Wow! this is really great.
-                          
-        //                   
-        //                 </div>
-        //               </div>
         
-        
-          let link = document.createElement('div');
+          var link = document.createElement('div');
           link.id= "link";
           link.class= "media";
-          
+          $('#link').addClass("media");
           
           let title = document.createElement('p');
           title.id= "title";          
@@ -126,7 +64,7 @@
           
 
 
-          link.html( '<p class="pull-right"><small>5 days ago</small></p>'+
+          $('#link').append('<p class="pull-right"><small>5 days ago</small></p>'+
                         '<a class="media-left" href="#">'+
                           '<img src="http://lorempixel.com/40/40/people/1/">' + 
                         '</a><div class="media-body">' + 
@@ -142,16 +80,7 @@
         //   link.append(ppl);
 
           // link.innerHTML = JSON.stringify(eventsJSON.test, null, 4);
-          $("#commentlist").append(link);
-              
-          
-          
-          '<div class="media"><p class="pull-right">' + 
-            '<small>5 days ago</small></p><a class="media-left" href="#">' + 
-                '<img src="http://lorempixel.com/40/40/people/3/">' + 
-                        '</a><div class="media-body"><h4 class="media-heading user_name">Yuxiang Singh</h4>' + 
-                          'Wow! this is really great.<p><small><a href="">Like</a> - <a href="">Share</a></small></p>' +
-                        + '</div></div>');
+
         
         // var link = document.createElement('a');
         // link.innerHTML = 'a'
