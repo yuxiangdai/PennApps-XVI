@@ -69,7 +69,7 @@ function deleteEvent(eventName, passcode) {
  * @param {[type]} message      [description]
  * @param {[type]} timeStamp    [description]
  */
-function addComment(eventName, commenterUID, message, timeStamp) {
+function addComment(eventName, commenterUID, message) {
     database.ref('events/' + eventName + '/comments/' + Date.now().toString()).set({
         commenterUID: commenterUID,
         message: message
@@ -98,7 +98,12 @@ app.get('/new', function(req, res) {
 });
 
 app.get('/events/:id', function(req, res, next) {
-    res.render('singleevent', { title: 'Event Details', action: 'details', id: req.params.id});
+    firebase.database().ref('/events/' + req.params.id).once('value').then(function(snapshot) {
+        
+                var json = snapshot.val();
+                console.log(json["description"]);
+                res.render('singleevent', { description: json["description"], location: json["location"], id: req.params.id});
+    });
 });
 
 // view the events of the current user
@@ -121,6 +126,14 @@ app.get("/myevents", function(req, res){
 // app.get('/test', function(req, res) {
 //     res.render("test");
 // });
+
+app.post("/comment/:id", function(req, res){
+    var message = req.body.message;
+    var commenterUID = req.body.commenterUID;
+    
+    addComment(req.params.id, commenterUID, message);
+    res.redirect("/events/" + req.params.id)
+});
 
 // create new event
 app.post("/new", function(req, res){
