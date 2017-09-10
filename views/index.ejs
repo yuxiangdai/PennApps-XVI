@@ -281,16 +281,20 @@
           location.innerHTML = "Location: " + eventsJSON[eventName].location;
           link.append(location);
 
+          // return appropriate text
+          function numPeopleMessage(numPeople) {
+            if (eventsJSON[eventName].numPeople == 0) {
+              return "Event is full!";
+            }
+            else if (eventsJSON[eventName].numPeople == 1) {
+              return "Room for " + eventsJSON[eventName].numPeople + " more person";
+            }
+            else {
+              return "Room for " + eventsJSON[eventName].numPeople + " more people";
+            }
+          }
           let ppl = document.createElement('p');
-          if (eventsJSON[eventName].numPeople == 0) {
-            ppl.innerHTML = "Event is full!";
-          }
-          else if (eventsJSON[eventName].numPeople == 1) {
-            ppl.innerHTML = "Room for " + eventsJSON[eventName].numPeople + " more person";
-          }
-          else {
-            ppl.innerHTML = "Room for " + eventsJSON[eventName].numPeople + " more people";
-          }
+          ppl.innerHTML = numPeopleMessage(eventsJSON[eventName].numPeople)
           link.append(ppl);
 
           let description = document.createElement('p');
@@ -318,19 +322,31 @@
           var joinedEvent = false;
           joinEvent.onclick = function(event) {
             joinedEvent = !joinedEvent;
-            let numPeopleLeft = database.ref('/events/' + eventName).numPeople;
+            let numPeopleLeft = eventsJSON[eventName].numPeople;
+
+            joinEvent.style.outline = 0;
             if (joinedEvent) {
               // just joined event
               joinEvent.innerHTML = 'Leave event'
+
               joinEvent.style.backgroundColor = 'red';
-              numPeopleLeft.set(Number(numPeopleLeft.val()) - 1)
+              console.log(numPeopleLeft)
+              console.log(database.ref('events/' + eventName))
+              database.ref('events/' + eventName).update({numPeople: numPeopleLeft - 1})
             }
             else {
               // just left event
               joinEvent.innerHTML = 'Join event'
               joinEvent.style.backgroundColor = 'white'
-              numPeopleLeft.set(Number(numPeopleLeft.val()) + 1)
+              database.ref('events/' + eventName).update({numPeople: numPeopleLeft + 1})
             }
+
+            database.ref('/events/').once('value').then(function(snapshot) {
+              eventsJSON = snapshot.val();
+            }); // update json to reflect changing numbers.
+
+            ppl.innerHTML = numPeopleMessage(eventsJSON[eventName].numPeople) // live number update            
+
           }
           // link.append(joinEvent);
 
