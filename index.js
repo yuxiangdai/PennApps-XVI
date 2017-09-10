@@ -94,8 +94,8 @@ app.get('/new', function(req, res) {
     res.render("new");
 });
 
-app.get('/:id', function(req, res, next) {
-    res.render('players', { title: 'Player Details', action: 'details', id: req.params.id});
+app.get('/events/:id', function(req, res, next) {
+    res.render('singleevent', { title: 'Event Details', action: 'details', id: req.params.id});
 });
 
 // view the events of the current user
