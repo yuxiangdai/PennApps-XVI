@@ -35,17 +35,20 @@ var database = firebase.database();
  * @param  {Json object} comments see addComment()
  * @return {[type]}            [description]
  */
-function setEvent(eventName, creatorUID, members, location, time, numPeople, description, passcode, comments) {
+function setEvent(eventName, creatorUID, members, location, hour, minute, ampm, numPeople, description, passcode, comments) {
     database.ref('events/' + eventName).set({
         creatorUID: creatorUID,
         members: members,
         location: location,
-        time: time,
+        hour: hour,
+        minute: minute,
+        ampm: ampm,
         numPeople: numPeople,
         description: description,
         passcode: passcode,
         comments: comments
         });
+
 }
 
 // return true if the password was correct, false if it wasn't.
@@ -122,14 +125,14 @@ app.get("/myevents", function(req, res){
 // create new event
 app.post("/new", function(req, res){
     // console.log(req.body);
-    var name = req.body.name;
-    var numPeople = req.body.numPeople;
-    // test posting to database
-    setEvent(name, 'creatorUID', 'members', 'Toronto', 'time', numPeople, 'description', 'passcode', 'HelloComment');
-    addComment(name, 'commenterUID', 'message2', 'timestamp');
-    setEvent(name, 'creatorUID', 'members', 'location', 'time', numPeople, 'description', 'passcode', 'comments');
-    // console.log("name:" + name)
-    // console.log("success")
+    // var name = req.body.name;
+    // var numPeople = req.body.numPeople;
+    // // test posting to database
+    // setEvent(name, 'creatorUID', 'members', 'Toronto', 'time', numPeople, 'description', 'passcode', 'HelloComment');
+    // addComment(name, 'commenterUID', 'message2', 'timestamp');
+    // setEvent(name, 'creatorUID', 'members', 'location', 'time', numPeople, 'description', 'passcode', 'comments');
+    let b = req.body;
+    setEvent(b['eventName'], 'creatorUID', 'members', b.location, b.hour, b.minute, b.ampm, b.numPeople, b.description, b.passcode, 'comments')
     res.redirect("/new")
 });
 /////
