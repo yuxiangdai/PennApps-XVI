@@ -192,9 +192,7 @@
   <div class="list-group">
     <a class="list-group-item" id="hour22" data-toggle="collapse" data-target="#demo13">11:00 - 11:59 PM</a>
       <div id="demo13" class="collapse">
-        <pre id="testLive">
-          
-        </pre>
+        
       </div>
   </div>
 </div>
@@ -220,7 +218,15 @@
         eventsJSON = snapshot.val();
         console.log(eventsJSON);
         // document.getElementById("testLive").innerHTML = JSON.stringify(eventsJSON, null, 4);
-        
+        for (let event in eventsJSON) {
+          let link = document.createElement('a');
+          link.href = '#';
+          link.innerHTML = JSON.stringify(eventsJSON.test, null, 4);
+          
+        }
+        var link = document.createElement('a');
+        link.innerHTML = 'a'
+        document.getElementById('demo13').append(link);
   });
 </script>
 <% include ../partials/footer %>
