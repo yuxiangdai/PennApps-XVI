@@ -9,7 +9,7 @@ var config = {
     storageBucket: "",
     messagingSenderId: "277333402514"
     };
-    firebase.initializeApp(config);
+firebase.initializeApp(config);
 
 const express = require('express')
 const app = express()

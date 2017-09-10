@@ -192,19 +192,35 @@
   <div class="list-group">
     <a class="list-group-item" id="hour22" data-toggle="collapse" data-target="#demo13">11:00 - 11:59 PM</a>
       <div id="demo13" class="collapse">
-        <p>Pret a Manger</p>
-              <ul>
-              <li>4 people</li>
-            </ul>
-        <p>Houston Market</p>
-          <ul>
-              <li>2 people</li>
-            </ul>
-  </div>
-
-
-
+        <pre id="testLive">
+          
+        </pre>
+      </div>
   </div>
 </div>
 
+<!-- dynamically update event info by querying database. -->
+<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+<script type="text/javascript">
+
+  // Initialize Firebase
+  var config = {
+      apiKey: "AIzaSyB-kYY6GjxJyLOo5a3WjwWy4Wton330Qqc",
+      authDomain: "pennapps-xvi-243c1.firebaseapp.com",
+      databaseURL: "https://pennapps-xvi-243c1.firebaseio.com",
+      projectId: "pennapps-xvi-243c1",
+      storageBucket: "",
+      messagingSenderId: "277333402514"
+      };
+  firebase.initializeApp(config);
+
+  var database = firebase.database();
+  var eventsJSON;
+  database.ref('/events/').once('value').then(function(snapshot) {
+        eventsJSON = snapshot.val();
+        console.log(eventsJSON);
+        // document.getElementById("testLive").innerHTML = JSON.stringify(eventsJSON, null, 4);
+        
+  });
+</script>
 <% include ../partials/footer %>
