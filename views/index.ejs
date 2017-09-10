@@ -343,32 +343,25 @@
             if (joinedEvent) {
               // just joined event
               joinEvent.innerHTML = 'Leave event'
-<<<<<<< HEAD
 
               joinEvent.style.backgroundColor = 'red';
               console.log(numPeopleLeft)
               console.log(database.ref('events/' + eventName))
               database.ref('events/' + eventName).update({numPeople: numPeopleLeft - 1})
-=======
               joinEvent.style.backgroundColor = 'FFA72D';
               joinEvent.style.color = 'white'; 
               numPeopleLeft.set(Number(numPeopleLeft.val()) - 1)
->>>>>>> 42944c4d8398bbbf99fcbb380b9c0bbb257989ad
             }
             else {
               // just left event
               joinEvent.innerHTML = 'Join event'
               joinEvent.style.backgroundColor = 'white'
-<<<<<<< HEAD
-<<<<<<< HEAD
+
               database.ref('events/' + eventName).update({numPeople: numPeopleLeft + 1})
-=======
+
               joinEvent.style.color = 'black'; 
-=======
               joinEvent.style.color = 'FFA72D';
->>>>>>> 5b37e6945e24b200cec6acdd2e4eb956e4115cfd
               numPeopleLeft.set(Number(numPeopleLeft.val()) + 1)
->>>>>>> 42944c4d8398bbbf99fcbb380b9c0bbb257989ad
             }
 
             database.ref('/events/').once('value').then(function(snapshot) {
