@@ -12,3 +12,9 @@ any comments labeled todo before deploy
 generate unique IDs for events rather than depending on event name because many people will want to use common names e.g. "lunch", "dinner"
 
 todo: input validation for everything
+
+clean up all the commented out code
+
+disable event joining once event reaches capacity unless other people join as well.
+
+implement user accounts
