@@ -303,10 +303,10 @@
           // determine under which time to put the link under
           var hours24;
           if (eventsJSON[eventName].ampm == 'am') {
-            hours24 = eventsJSON[eventName].hour;
+            hours24 = Number(eventsJSON[eventName].hour);
           }
           else {
-            hours24 = eventsJSON[eventName].hour + 12;
+            hours24 = Number(eventsJSON[eventName].hour) + 12;
           }
           hours24 = Number(hours24);
           let demoID = "demo" + (hours24 - 6); //6 is a magic number because of the way the label and the demo id are incremented in parallel.
