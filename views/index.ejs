@@ -199,19 +199,19 @@
         eventsJSON = snapshot.val();
         console.log(eventsJSON);
         // document.getElementById("testLive").innerHTML = JSON.stringify(eventsJSON, null, 4);
-        for (var event in eventsJSON) {
+        for (var eventName in eventsJSON) {
           // console.log(typeof(event))
           let link = document.createElement('a');
-          link.href = '#';
           
           let title = document.createElement('h4');
-          title.innerHTML = "" + event;
+          title.innerHTML = "" + eventName;
           link.append(title);
           
           let ppl = document.createElement('p');
-          ppl.innerHTML = eventsJSON[event].numPeople;
+          ppl.innerHTML = eventsJSON[eventName].numPeople;
           link.append(ppl);
 
+          link.href = '/events/' + eventName;
           // link.innerHTML = JSON.stringify(eventsJSON.test, null, 4);
           document.getElementById('demo1').append(link);
         }
