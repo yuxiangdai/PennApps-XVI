@@ -17,6 +17,6 @@ clean up all the commented out code
 
 disable event joining once event reaches capacity unless other people join as well.
 
-implement user accounts
+implement user accounts and related features e.g. commenting.
 
 allow user to edit and delete events-- passwords?
