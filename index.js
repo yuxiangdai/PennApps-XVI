@@ -145,7 +145,7 @@ app.post("/new", function(req, res){
     // addComment(name, 'commenterUID', 'message2', 'timestamp');
     // setEvent(name, 'creatorUID', 'members', 'location', 'time', numPeople, 'description', 'passcode', 'comments');
     let b = req.body;
-setEvent(b['eventName'], 'creatorUID', 'members', b.location, b.hour, b.minute, b.ampm, b.numPeople, b.description, b.passcode, 'comments')
+    setEvent(b['eventName'], 'creatorUID', 'members', b.location, b.hour, b.minute, b.ampm, b.numPeople, b.description, b.passcode, {})
     res.redirect("/new")
 });
 /////
