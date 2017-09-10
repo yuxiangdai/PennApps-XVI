@@ -327,7 +327,8 @@
 
           // add button to join event (toggle)
           let joinEvent = document.createElement('button')
-          joinEvent.innerHTML = 'Join event'
+          joinEvent.innerHTML = 'Join event'; 
+          joinEvent.style.backgroundColor = 'white'; 
           var joinedEvent = false;
           joinEvent.onclick = function(event) {
             joinedEvent = !joinedEvent;
@@ -343,6 +344,7 @@
               // just left event
               joinEvent.innerHTML = 'Join event'
               joinEvent.style.backgroundColor = 'white'
+              joinEvent.style.color = 'black'; 
               numPeopleLeft.set(Number(numPeopleLeft.val()) + 1)
             }
           }
