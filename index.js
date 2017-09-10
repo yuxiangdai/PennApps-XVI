@@ -36,12 +36,14 @@ var database = firebase.database();
  * @param {[type]} passcode    [description]
  * @param {[type]} comments    [description]
  */
-function setEvent(eventName, creatorUID, members, location, time, numPeople, description, passcode, comments) {
+function setEvent(eventName, creatorUID, members, location, hour, minute, ampm, numPeople, description, passcode, comments) {
     database.ref('events/' + eventName).set({
         creatorUID: creatorUID,
         members: members,
         location: location,
-        time: time,
+        hour: hour,
+        minute: minute,
+        ampm: ampm,
         numPeople: numPeople,
         description: description,
         passcode: passcode,
@@ -96,12 +98,7 @@ app.get('/new', function(req, res) {
 });
 
 app.get('/events/:id', function(req, res, next) {
-    firebase.database().ref('/events/' + req.params.id).once('value').then(function(snapshot) {
-        
-                var json = snapshot.val();
-                console.log(json["description"]);
-                res.render('singleevent', { description: json["description"], location: json["location"], id: req.params.id});
-    });
+    res.render('singleevent', { title: 'Event Details', action: 'details', id: req.params.id});
 });
 
 // view the events of the current user
