@@ -1,9 +1,55 @@
 <!-- list of the events that the user is involved in -->
-<% include ../partials/header %>
+<% include ../partials/events-header %>
 
 <div class="container">
     <h2><%= id %></h2>
     <h2>Comments</h2>
+    <div id="demo1" class="collapse">
+
+    </div>
 </div>
 
+<script src="https://www.gstatic.com/firebasejs/4.3.0/firebase.js"></script>
+<script type="text/javascript">
+
+  // Initialize Firebase
+  var config = {
+      apiKey: "AIzaSyB-kYY6GjxJyLOo5a3WjwWy4Wton330Qqc",
+      authDomain: "pennapps-xvi-243c1.firebaseapp.com",
+      databaseURL: "https://pennapps-xvi-243c1.firebaseio.com",
+      projectId: "pennapps-xvi-243c1",
+      storageBucket: "",
+      messagingSenderId: "277333402514"
+      };
+  firebase.initializeApp(config);
+
+  var database = firebase.database();
+  var eventsJSON;
+  var eventName = <%- JSON.stringify(id) %>;
+  database.ref('/events/').once('value').then(function(snapshot) {
+        eventsJSON = snapshot.val();
+
+
+        console.log("eJSON:" + eventsJSON[eventName]);
+        // document.getElementById("testLive").innerHTML = JSON.stringify(eventsJSON, null, 4);
+          // console.log(typeof(event))
+          let link = document.createElement('a');
+          link.href = '#';
+          
+          let title = document.createElement('h4');
+          title.innerHTML = "innetHTML";
+          link.append(title);
+          
+        //   let ppl = document.createElement('p');
+        //   ppl.innerHTML = eventsJSON[event].numPeople;
+        //   link.append(ppl);
+
+          // link.innerHTML = JSON.stringify(eventsJSON.test, null, 4);
+          document.getElementById('demo1').append(link);
+        
+        // var link = document.createElement('a');
+        // link.innerHTML = 'a'
+        // document.getElementById('demo13').append(link);
+  });
+</script>
 <% include ../partials/footer %>
