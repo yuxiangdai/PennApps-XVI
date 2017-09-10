@@ -20,3 +20,5 @@ disable event joining once event reaches capacity unless other people join as we
 implement user accounts and related features e.g. commenting.
 
 allow user to edit and delete events-- passwords?
+
+implement "My Events"-- events that the user is involved in. See partials/header.ejs and partials/index-header.ejs commented out part. 
