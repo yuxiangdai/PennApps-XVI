@@ -291,11 +291,34 @@
           hours24 = Number(hours24);
           let demoID = "demo" + (hours24 - 6); //6 is a magic number because of the way the label and the demo id are incremented in parallel.
           
+
+          // add button to join event (toggle)
+          let joinEvent = document.createElement('button')
+          joinEvent.innerHTML = 'Join event'
+          var joinedEvent = false;
+          joinEvent.onclick = function(event) {
+            joinedEvent = !joinedEvent;
+            if (joinedEvent) {
+              joinEvent.innerHTML = 'Leave event'
+              joinEvent.style.backgroundColor = 'red';
+            }
+            else {
+              joinEvent.innerHTML = 'Join event'
+              joinEvent.style.backgroundColor = 'white'
+            }
+          }
+          // link.append(joinEvent);
+
           document.getElementById(demoID).append(link);
+          document.getElementById(demoID).append(joinEvent);
         }
         // var link = document.createElement('a');
         // link.innerHTML = 'a'
         // document.getElementById('demo13').append(link);
   });
+
+  function decrement() {
+
+  }
 </script>
 <% include ../partials/footer %>
