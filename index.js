@@ -91,9 +91,11 @@ app.get('/', function (req, res) {
 
 // create new event
 app.get('/new', function(req, res) {
-
-
     res.render("new");
+});
+
+app.get('/:id', function(req, res, next) {
+    res.render('players', { title: 'Player Details', action: 'details', id: req.params.id});
 });
 
 // view the events of the current user

@@ -6,3 +6,7 @@
 .page-header {
     border-bottom: none;
 }
+
+.navbar {
+    margin-bottom: 0px;
+}
