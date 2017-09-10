@@ -75,14 +75,14 @@
   <div class="list-group">
     <a class="list-group-item" id="hour11" data-toggle="collapse" data-target="#demo5">11:00 - 11:59 AM</a>
     <div id="demo5" class="collapse">
-      <!-- <p>Pret a Manger</p>
+      <p>Pret a Manger</p>
       <ul>
           <li>4 people</li>
         </ul>
       <p>Houston Market</p>
       <ul>
           <li>2 people</li>
-        </ul> -->
+        </ul>
     </div>
   </div>
   <div class="list-group">
@@ -281,8 +281,16 @@
           // link.innerHTML = JSON.stringify(eventsJSON.test, null, 4);
           
           // determine under which time to put the link under
+          var hours24;
+          if (eventsJSON[eventName].ampm == 'am') {
+            hours24 = eventsJSON[eventName].hour;
+          }
+          else {
+            hours24 = eventsJSON[eventName].hour + 12;
+          }
+          let demoID = "demo" + (hours24 - 6); //6 is a magic number because of the way the label and the demo id are incremented in parallel.
 
-          document.getElementById('demo1').append(link);
+          document.getElementById(demoID).append(link);
         }
         // var link = document.createElement('a');
         // link.innerHTML = 'a'
