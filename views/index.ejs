@@ -16,16 +16,16 @@
 <div class="container">
   <h2>Events</h2>
   <div class="list-group">
-    <a class="list-group-item" id="hour11" data-toggle="collapse" data-target="#demo">11:00 - 11:59 AM</a>
-  <div id="demo" class="collapse">
-    <p>Pret a Manger</p>
+    <a class="list-group-item" id="hour11" data-toggle="collapse" data-target="#demo1">11:00 - 11:59 AM</a>
+  <div id="demo1" class="collapse">
+    <!-- <p>Pret a Manger</p>
     <ul>
         <li>4 people</li>
       </ul>
     <p>Houston Market</p>
     <ul>
         <li>2 people</li>
-      </ul>
+      </ul> -->
   </div>
   <div class="list-group">
     <a class="list-group-item" id="hour12" data-toggle="collapse" data-target="#demo2">12:00 - 12:59 PM</a>
@@ -199,15 +199,25 @@
         eventsJSON = snapshot.val();
         console.log(eventsJSON);
         // document.getElementById("testLive").innerHTML = JSON.stringify(eventsJSON, null, 4);
-        for (let event in eventsJSON) {
+        for (var event in eventsJSON) {
+          // console.log(typeof(event))
           let link = document.createElement('a');
           link.href = '#';
-          link.innerHTML = JSON.stringify(eventsJSON.test, null, 4);
           
+          let title = document.createElement('h4');
+          title.innerHTML = "" + event;
+          link.append(title);
+          
+          let ppl = document.createElement('p');
+          ppl.innerHTML = eventsJSON[event].numPeople;
+          link.append(ppl);
+
+          // link.innerHTML = JSON.stringify(eventsJSON.test, null, 4);
+          document.getElementById('demo1').append(link);
         }
-        var link = document.createElement('a');
-        link.innerHTML = 'a'
-        document.getElementById('demo13').append(link);
+        // var link = document.createElement('a');
+        // link.innerHTML = 'a'
+        // document.getElementById('demo13').append(link);
   });
 </script>
 <% include ../partials/footer %>
