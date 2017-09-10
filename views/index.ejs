@@ -298,13 +298,18 @@
           var joinedEvent = false;
           joinEvent.onclick = function(event) {
             joinedEvent = !joinedEvent;
+            let numPeopleLeft = database.ref('/events/' + eventName).numPeople;
             if (joinedEvent) {
+              // just joined event
               joinEvent.innerHTML = 'Leave event'
               joinEvent.style.backgroundColor = 'red';
+              numPeopleLeft.set(Number(numPeopleLeft.val()) - 1)
             }
             else {
+              // just left event
               joinEvent.innerHTML = 'Join event'
               joinEvent.style.backgroundColor = 'white'
+              numPeopleLeft.set(Number(numPeopleLeft.val()) + 1)
             }
           }
           // link.append(joinEvent);
