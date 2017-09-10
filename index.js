@@ -96,7 +96,12 @@ app.get('/new', function(req, res) {
 });
 
 app.get('/events/:id', function(req, res, next) {
-    res.render('singleevent', { title: 'Event Details', action: 'details', id: req.params.id});
+    firebase.database().ref('/events/' + req.params.id).once('value').then(function(snapshot) {
+        
+                var json = snapshot.val();
+                console.log(json["description"]);
+                res.render('singleevent', { description: json["description"], location: json["location"], id: req.params.id});
+    });
 });
 
 // view the events of the current user
